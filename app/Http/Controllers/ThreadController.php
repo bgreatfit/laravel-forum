@@ -16,7 +16,7 @@ class ThreadController extends Controller
     {
         //
         $threads = Thread::latest()->get();
-        return view('thread.thread',compact('threads'));
+        return view('threads.thread',compact('threads'));
     }
 
     /**
@@ -27,6 +27,7 @@ class ThreadController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -37,7 +38,13 @@ class ThreadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Thread::create([
+            'user_id' => auth()->id(),
+            'title' => request(''),
+            'body' => request('')
+        ]);
+        return back();
     }
 
     /**
@@ -49,7 +56,7 @@ class ThreadController extends Controller
     public function show(Thread $thread)
     {
         //
-        return view('thread.show',compact('thread'));
+        return view('threads.show',compact('thread'));
     }
 
     /**

@@ -19,16 +19,16 @@ class ReadThreadTest extends TestCase
         parent::setUp();
         $this->thread = factory('App\Thread')->create();
     }
-    public function a_user_can_browse_thread()
+    public function test_a_user_can_browse_thread()
     {
-        $response = $this->get('/thread');
+        $response = $this->get('/threads');
 
         $response->assertStatus(200);
     }
     public function test_a_user_can_read_replies_that_associated_with_a_thread()
     {
         $reply = factory('App\Reply')->create(['thread_id'=>$this->thread->id]);
-         $this->get('/thread/'.$this->thread->id)
+         $this->get('/threads/'.$this->thread->id)
          ->assertSee($reply->body);
     }
 }

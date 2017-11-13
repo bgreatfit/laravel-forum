@@ -10,9 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/thread','ThreadController@index');
-Route::get('/thread/{thread}','ThreadController@show');
-Route::get('/', function () {
+Route::get('/','HomeController@index');
+Route::get('/threads','ThreadController@index');
+Route::get('/threads/{thread}','ThreadController@show');
+Route::get('/threads/create}','ThreadController@show');
+Route::get('/threads/{thread}/replies','ReplyController@store');
+Route::get('test', function () {
     return view('test');
 });
 
