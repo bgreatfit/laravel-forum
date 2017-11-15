@@ -16,17 +16,24 @@ class CreateThreadsTest extends TestCase
      * @return void
      */
     /** @test */
+    public function a_guest_user_may_not_create_thread()
+    {
+        $this->expectException('Illuminate\Auth\AuthenticationException');
+        $thread = factory('App\Thread')->make();
+        //Then when we visit the endpoint
+        $this->post('/threads',$thread->toArray());
+    }
+    /** @test */
     public function an_authenticated_user_can_create_thread()
     {
         // given we have an authenticated user
-        $this->actingAs($user = factory('App\User')->create());
+        $this->signIn();
         //when we hit the end point to create a new thread
-        $thread = factory('App\Thread')->create();
-        //Then when we visit the edpoin
-        $this->post('/thread',$thread->toArray());
-        //when we should see the niew thread;
-        $this->get($thread->path());
-        $this->assertSee($thread->title)
-            ->assertSee($thread->body);
+        $thread = make('App\Thread');
+        //Then when we visit the endpoint
+        $this->post('/threads',$thread->toArray());
+        //when we should see the view thread;
+        $this->get($thread->path())
+             ->assertSee($thread->body);
     }
 }
