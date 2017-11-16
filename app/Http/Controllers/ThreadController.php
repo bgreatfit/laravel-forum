@@ -21,7 +21,7 @@ class ThreadController extends Controller
     {
         //
         $threads = Thread::latest()->get();
-        return view('threads.thread',compact('threads'));
+        return view('threads.index',compact('threads'));
     }
 
     /**
@@ -31,7 +31,7 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        //
+        return view('threads.create');
 
     }
 
