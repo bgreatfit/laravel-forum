@@ -25,6 +25,12 @@ class ReadThreadTest extends TestCase
 
         $response->assertStatus(200);
     }
+    public function test_a_user_can_view_create_thread()
+    {
+        $response = $this->get('/threads');
+
+        $response->assertRedirect('login');
+    }
     public function test_a_user_can_read_replies_that_associated_with_a_thread()
     {
         $reply = factory('App\Reply')->create(['thread_id'=>$this->thread->id]);

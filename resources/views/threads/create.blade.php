@@ -7,20 +7,25 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Create a New Tgh</div>
 
-                        <form action="{{url('/threads')}}" method="post">
-                            {{csrf_field()}}
+
                             <div class="panel-body">
+                                <form action="{{url('/threads')}}" method="post">
+                                    {{csrf_field()}}
                                 <div class="form-group">
                                     <label for="">Title</label>
                                     <input type="text" class="form-control" name="title" id="" aria-describedby="helpId"
                                            placeholder="">
                                 </div>
+                                <div class="form-group">
+                                        <label for="">Body</label>
+                                        <textarea class="form-control" name="body" id="" rows="8"></textarea>
+                                </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        Publish
+                                    </button>
+                                </form>
+
                             </div>
-                            <div class="form-group">
-                                <label for="">Body</label>
-                                <textarea class="form-control" name="body" id="" rows="8"></textarea>
-                            </div>
-                        </form>
 
                     </div>
             </div>
