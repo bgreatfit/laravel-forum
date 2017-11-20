@@ -25,9 +25,9 @@ Route::get('/','HomeController@index');
 //Route::get('/threads/create}','ThreadController@show');
 Route::resource('threads','ThreadController');
 Route::get('/threads/{thread}/replies','ReplyController@store');
-////Route::get('test', function () {
-////    return view('test');
-//});
+Route::get('test', function () {
+    return view('test');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
