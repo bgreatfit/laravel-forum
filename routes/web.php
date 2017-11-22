@@ -19,12 +19,13 @@
 //PUT     /users/{user}               update  users.update
 //DELETE  /users/{user}               destroy users.destroy
 Route::get('/','HomeController@index');
-//Route::get('/threads','ThreadController@index');
-//Route::post('/threads','ThreadController@store');
-//Route::get('/threads/{thread}','ThreadController@show');
-//Route::get('/threads/create}','ThreadController@show');
-Route::resource('threads','ThreadController');
+Route::get('/threads','ThreadController@index');
+Route::post('/threads','ThreadController@store');
+Route::get('/threads/create','ThreadController@create');
+Route::get('/threads/{channel}/{thread}','ThreadController@show');
 Route::get('/threads/{thread}/replies','ReplyController@store');
+
+//Route::resource('threads','ThreadController');
 Route::get('test', function () {
     return view('test');
 });

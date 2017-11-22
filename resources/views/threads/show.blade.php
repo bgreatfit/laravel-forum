@@ -5,14 +5,10 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Dashboard</div>
+                    <div class="panel-heading">{{$thread->creatorName()}} posted <a href="{{$thread->path()}}">{{$thread->title}}</a></div>
 
                     <div class="panel-body">
-
-                            <div class="alert alert-success">
-                                {{$thread->body}}
-                            </div>
-
+                        {{$thread->body}}
                     </div>
                 </div>
             </div>
@@ -36,10 +32,12 @@
 
 
                 </form>
-                <p class="text-center">Please <a href="{{route('login')}}">sign</a>  in to participate in this discussion</p>
 
             </div>
         </div>
+        @else
+            <p class="text-center">Please <a href="{{route('login')}}">sign</a>  in to participate in this discussion</p>
+
         @endif
 
     </div>

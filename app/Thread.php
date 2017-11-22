@@ -10,7 +10,7 @@ class Thread extends Model
     protected  $guarded =[];
     public function path()
     {
-       return '/threads/'.$this->id;
+       return "/threads/{$this->channel->slug}/{$this->id}";
     }
     public function user()
     {
