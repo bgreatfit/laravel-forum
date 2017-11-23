@@ -25,6 +25,7 @@ Route::get('/threads/create','ThreadController@create');
 Route::get('/threads/{thread}','ThreadController@show');
 Route::get('/threads/{thread}/replies','ReplyController@store');
 Auth::routes();
+Route::get('/threads/{channel}/{thread}','ThreadController@show');
 
 //Route::resource('threads','ThreadController');
 Route::get('test', function () {
