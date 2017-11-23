@@ -27,7 +27,7 @@ class ReadThreadTest extends TestCase
     }
     public function test_a_user_can_view_create_thread()
     {
-        $response = $this->get('/threads');
+        $response = $this->get('/threads/create');
 
         $response->assertRedirect('login');
     }

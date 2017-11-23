@@ -14,7 +14,7 @@ class ThreadController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('show','index','create');
     }
 
     public function index()
@@ -45,7 +45,7 @@ class ThreadController extends Controller
     {
        $thread =Thread::create([
             'user_id' => auth()->id(),
-            'channel_id'=>null,
+            'channel_id'=>rand(1,5),
             'title' => request('title'),
             'body' => request('body')
         ]);
