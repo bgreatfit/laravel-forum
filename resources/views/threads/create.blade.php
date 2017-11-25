@@ -20,6 +20,9 @@
                                         <label for="">Body</label>
                                         <textarea class="form-control" name="body" id="" rows="8"></textarea>
                                 </div>
+
+                                    <input type="text" class="form-control" name="channel_id" value="30" id="" aria-describedby="helpId"
+                                           placeholder="">
                                     <button type="submit" class="btn btn-primary">
                                         Publish
                                     </button>
@@ -29,5 +32,6 @@
 
                     </div>
             </div>
+        </div>
         </div>
 @endsection

@@ -10,6 +10,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ReadThreadTest extends TestCase
 {
     use DatabaseMigrations;
+    private $thread;
+
     /**
      * A basic test example.
      *
@@ -34,7 +36,8 @@ class ReadThreadTest extends TestCase
     public function test_a_user_can_read_replies_that_associated_with_a_thread()
     {
         $reply = factory('App\Reply')->create(['thread_id'=>$this->thread->id]);
-         $this->get('/threads/'.$this->thread->id)
+//        dd($this->thread->path());
+         $this->get("/threads/{$this->thread->I}")
          ->assertSee($reply->body);
     }
 }
