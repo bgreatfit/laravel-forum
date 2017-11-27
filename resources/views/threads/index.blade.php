@@ -7,7 +7,7 @@
                 @foreach($threads as $thread)
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            {{$thread->creatorName()}} posted <a href="{{$thread->path()}}">{{$thread->title}}</a></div>
+                            {{$thread->user->name}} posted <a href="{{$thread->path()}}">{{$thread->title}}</a></div>
 
                         <div class="panel-body">
                                 {{$thread->body}}

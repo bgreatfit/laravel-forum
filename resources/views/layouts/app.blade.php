@@ -37,8 +37,17 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;<li class=""><a href="/threads"> All Thread</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Channels <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach(App\Channel::all() as $channel)
+                                <li><a href="/threads/{{$channel->slug}}">{{$channel->slug}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->

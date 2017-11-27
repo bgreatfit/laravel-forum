@@ -23,7 +23,7 @@
         @if(auth()->check())
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <form action="{{$thread->path()}}./replies" class="action">
+                <form action="{{$thread->path()}}/replies" class="action" method="post">
                     {{csrf_field()}}
                     <div class="form-group">
                         <textarea  name="body" rows="5" class="form-control" placeholder="Have something to saY?"></textarea>

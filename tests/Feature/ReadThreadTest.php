@@ -19,7 +19,7 @@ class ReadThreadTest extends TestCase
      */
     public function setup(){
         parent::setUp();
-        $this->thread = factory('App\Thread')->create();
+        $this->thread = create('App\Thread');
     }
     public function test_a_user_can_browse_thread()
     {
@@ -27,17 +27,32 @@ class ReadThreadTest extends TestCase
 
         $response->assertStatus(200);
     }
-    public function test_a_user_can_view_create_thread()
+//    public function test_a_user_can_view_create_thread()
+//    {
+//        $this->withExceptionHandling();
+//        $this->get('/threads/create')
+//        ->assertRedirect()('login');
+//    }
+    /** @test */
+    function a_user_can_read_a_single_thread()
     {
-        $response = $this->get('/threads/create');
-
-        $response->assertRedirect('login');
+        $this->get($this->thread->path())
+            ->assertSee($this->thread->title);
     }
-    public function test_a_user_can_read_replies_that_associated_with_a_thread()
+    function test_a_thread_can_be_filtered_by_tag()
     {
-        $reply = factory('App\Reply')->create(['thread_id'=>$this->thread->id]);
-//        dd($this->thread->path());
-         $this->get("/threads/{$this->thread->I}")
-         ->assertSee($reply->body);
+        $channel = create('App\Channel');
+        $threadInChannel = create('App\Thread',['channel_id'=> $channel->id]);
+        $threadNotInChannel = create('App\Thread');
+        $this->get("threads/{$channel->slug}")
+            ->assertSee($threadInChannel->title)
+            ->assertDontsee($threadNotInChannel->title);
     }
+//    public function test_a_user_can_read_replies_that_associated_with_a_thread()
+//    {
+//        $reply = factory('App\Reply')->create(['thread_id'=>$this->thread->id]);
+////        dd($this->thread->path());
+//         $this->get("/threads/{$this->thread->path()}")
+//         ->assertSee($reply->body);
+//    }
 }

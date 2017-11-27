@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Channel;
 use App\Thread;
 use Illuminate\Http\Request;
 
@@ -14,13 +15,23 @@ class ThreadController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('show','index','create');
+        $this->middleware('auth')->except('show','index');
     }
 
-    public function index()
+    public function index(Channel $channel )
     {
-        //
-        $threads = Thread::latest()->get();
+        if($channel->exists)
+        {
+            $threads = $channel->threads()->latest()->get();
+
+//            $channel_id = Channel::where('slug',$channelSlug)->get()->first();
+//            $threads = Thread::where("channel_id",$channel_id->id)->latest()->get();
+
+        }
+        else {
+            $threads = Thread::with('channel')->latest()->get();
+        }
+//         App\Book::with('author')->get();
         return view('threads.index',compact('threads'));
     }
 
@@ -43,6 +54,13 @@ class ThreadController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,
+            ['title'=> 'required',
+            'body'=> 'required',
+            'channel_id'=> 'required|exists:channels,id',
+
+            ]
+            );
        $thread =Thread::create([
             'user_id' => auth()->id(),
             'channel_id'=>request('channel_id'),
@@ -60,7 +78,7 @@ class ThreadController extends Controller
      */
     public function show($channelId,Thread $thread)
     {
-        //
+        //d
         return view('threads.show',compact('thread'));
     }
 

@@ -29,13 +29,46 @@ class CreateThreadsTest extends TestCase
         // given we have an authenticated user
         $this->signIn();
         //when we hit the end point to create a new thread
-        $thread = create('App\Thread');
+        $thread = make('App\Thread');
 //        dd($thread);
 
         //Then when we visit the endpoint
-        $this->post('/threads',$thread->toArray());
+        $response =$this->post('/threads',$thread->toArray());
         //when we should see the view thread;
-        $this->get($thread->path())
+        $this->get($response->headers->get('Location'))
              ->assertSee($thread->body);
     }
+    /** @test */
+    function a_thread_requires_a_title()
+    {
+       $this->publish_thread(['title'=>null])
+           ->assertSessionHasErrors('title');
+    }
+    /** @test */
+    function a_thread_requires_a_body()
+    {
+       $this->publish_thread(['body'=>null])
+           ->assertSessionHasErrors('body');
+    }
+    /** @test */
+    function a_thread_requires_a_channelId()
+    {
+       $this->publish_thread(['channel_id'=>null])
+           ->assertSessionHasErrors('channel_id');
+       $this->publish_thread(['channel_id'=>999])
+           ->assertSessionHasErrors('channel_id');
+
+    }
+    function publish_thread($field=[])
+    {
+        $this->withExceptionHandling()->signIn();
+        //when we hit the end point to create a new thread
+        $thread = make('App\Thread',$field);
+//        dd($thread);
+
+        //Then when we visit the endpoint
+        return $this->post('/threads',$thread->toArray());
+
+    }
+
 }
