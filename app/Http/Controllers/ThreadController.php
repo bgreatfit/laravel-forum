@@ -22,15 +22,22 @@ class ThreadController extends Controller
     {
         if($channel->exists)
         {
-            $threads = $channel->threads()->latest()->get();
+            $threads = $channel->threads()->latest();
 
 //            $channel_id = Channel::where('slug',$channelSlug)->get()->first();
 //            $threads = Thread::where("channel_id",$channel_id->id)->latest()->get();
 
         }
         else {
-            $threads = Thread::with('channel')->latest()->get();
+            $threads = Thread::with('channel')->latest();
         }
+
+        if($username = request('by')){
+            $user =  \App\User::where('name',$username)->firstOrFail();
+            $threads = $threads->where('user_id',$user->id);
+
+        }
+        $threads = $threads->get();
 //         App\Book::with('author')->get();
         return view('threads.index',compact('threads'));
     }

@@ -28,26 +28,40 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/threads') }}">
+                        {{ config('app.name', 'Forum') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;<li class=""><a href="/threads"> All Thread</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Browse <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                &nbsp;<li class=""><a href="/threads"> All Threads</a></li>
+                                @if(auth()->check())
+                                    <li class=""><a href="/threads?by={{auth()->user()->name}}"> My Threads</a></li>
+                                @endif
+                            </ul>
+                        </li>
+                        &nbsp;<li class=""><a href="{{url('threads/create')}}"> New Thread</a></li>
+
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Channels <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                @foreach(App\Channel::all() as $channel)
+                                @foreach($channels as $channel)
                                 <li><a href="/threads/{{$channel->slug}}">{{$channel->slug}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
+
                     </ul>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->

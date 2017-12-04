@@ -39,7 +39,7 @@ class ReadThreadTest extends TestCase
         $this->get($this->thread->path())
             ->assertSee($this->thread->title);
     }
-    function test_a_thread_can_be_filtered_by_tag()
+    function test_a_thread_can_be_filtered_by_channel()
     {
         $channel = create('App\Channel');
         $threadInChannel = create('App\Thread',['channel_id'=> $channel->id]);
@@ -47,6 +47,16 @@ class ReadThreadTest extends TestCase
         $this->get("threads/{$channel->slug}")
             ->assertSee($threadInChannel->title)
             ->assertDontsee($threadNotInChannel->title);
+    }
+    public function test_an_authenticated_user_can_filter_thread_by_name()
+    {
+        $this->signIn(create('App\User',['name'=>'JohnJoe']));
+        $threadByJohnJoe = create('App\Thread',['user_id'=>auth()->id()]);
+        $threadNotByJohnJoe = create('App\Thread');
+        $this->get('threads?by=JohnJoe')
+            ->assertSee($threadByJohnJoe->title)
+            ->assertDontSee($threadNotByJohnJoe->title);
+
     }
 //    public function test_a_user_can_read_replies_that_associated_with_a_thread()
 //    {
