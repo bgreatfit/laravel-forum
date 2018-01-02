@@ -58,6 +58,17 @@ class ReadThreadTest extends TestCase
             ->assertDontSee($threadNotByJohnJoe->title);
 
     }
+     public function test_to_filter_a_thread_by_popularity()
+    {
+        $this->signIn(create('App\User',['name'=>'JohnJoe']));
+        $threadByJohnJoe = create('App\Thread',['user_id'=>auth()->id()]);
+        $threadNotByJohnJoe = create('App\Thread');
+        $this->get('threads?by=JohnJoe')
+            ->assertSee($threadByJohnJoe->title)
+            ->assertDontSee($threadNotByJohnJoe->title);
+
+    }
+
 //    public function test_a_user_can_read_replies_that_associated_with_a_thread()
 //    {
 //        $reply = factory('App\Reply')->create(['thread_id'=>$this->thread->id]);
