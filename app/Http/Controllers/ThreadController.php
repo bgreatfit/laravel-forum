@@ -137,6 +137,7 @@ class ThreadController extends Controller
         }
 
         $threads = $threads->paginate(25);
+//        dd($threads->toSql());
         return $threads;
     }
 }
