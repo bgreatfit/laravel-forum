@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
  */
 class ThreadFilter extends Filters
 {
-    protected $filters = ['by'];
+    protected $filters = ['by','popular'];
     protected $name  ='john';
 
     /**
@@ -33,7 +33,6 @@ class ThreadFilter extends Filters
     }
     public function popular()
     {
-        dd('hi');
         $this->builder->getQuery()->orders= [];
         return $this->builder->orderBy('replies_count', 'desc');
     }

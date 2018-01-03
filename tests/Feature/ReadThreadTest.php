@@ -65,8 +65,7 @@ class ReadThreadTest extends TestCase
         //When we filter the thread we then we should see the most to least
         $threadWithThreeReplies = create('App\Thread');
         create('App\Reply',['thread_id'=>$threadWithThreeReplies],3);
-        $threadWithNoReplies = create('App\Thread');
-        create('App\Reply',['thread_id'=>$threadWithNoReplies],0);
+        $threadWithNoReplies =  $this->thread;
 
         $threadWithTwoReplies = create('App\Thread');
         create('App\Reply',['thread_id'=>$threadWithTwoReplies],2);

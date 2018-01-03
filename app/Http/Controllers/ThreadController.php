@@ -24,7 +24,7 @@ class ThreadController extends Controller
 //        $tasks = Tasks::where('task',true)->get();
 //        $tasks = Tasks::done()->get();
         $threads = $this->getThread($channel, $filters);
-        if($request->wantsJson())
+        if(request()->wantsJson())
         {
             return $threads;
         }
@@ -136,7 +136,7 @@ class ThreadController extends Controller
 
         }
 
-        $threads = $threads->paginate(25);
+//        $threads = $threads->paginate(25);
 //        dd($threads->toSql());
         return $threads;
     }
