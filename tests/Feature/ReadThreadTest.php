@@ -60,7 +60,7 @@ class ReadThreadTest extends TestCase
     }
      public function test_to_filter_a_thread_by_popularity()
     {
-        $this->signIn(create('App\User',['name'=>'JohnJoe']));
+//        $this->signIn(create('App\User',['name'=>'JohnJoe']));
         //\Given we have that we have 3 threads with certain number of replies
         //When we filter the thread we then we should see the most to least
         $threadWithThreeReplies = create('App\Thread');

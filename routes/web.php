@@ -18,6 +18,8 @@
 //GET     /users/{user}/edit          edit    users.edit
 //PUT     /users/{user}               update  users.update
 //DELETE  /users/{user}               destroy users.destroy
+Route::get('/runtest','TestController@ind');
+Route::post('/runtest','TestController@store');
 Route::get('/','HomeController@index');
 Route::get('/threads','ThreadController@index');
 Route::post('/threads','ThreadController@store');
