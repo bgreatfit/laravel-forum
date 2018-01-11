@@ -20,4 +20,18 @@ class Reply extends Model
     {
         return $this->user->name;
     }
+    public function favourite($attribute)
+    { if(!$this->favourites()->where($attribute)->exists())
+        {
+            $this->favourites()->create($attribute);
+        }
+    }
+
+    public function favourites()
+    {
+        return $this->morphMany(Favourite::class,'favorited');
+    }
+
+
+
 }

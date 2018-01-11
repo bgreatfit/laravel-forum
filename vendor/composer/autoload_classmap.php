@@ -9,8 +9,7 @@ return array(
     'App\\Channel' => $baseDir . '/app/Channel.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
-    'App\\Favorite' => $baseDir . '/app/Favorite.php',
-    'App\\Favorited' => $baseDir . '/app/Favorited.php',
+    'App\\Favourite' => $baseDir . '/app/Favourite.php',
     'App\\Filters\\Filters' => $baseDir . '/app/Filters/Filters.php',
     'App\\Filters\\ThreadFilter' => $baseDir . '/app/Filters/ThreadFilter.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -41,8 +40,12 @@ return array(
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'Carbon\\Exceptions\\InvalidDateException' => $vendorDir . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
     'CreateChannelsTable' => $baseDir . '/database/migrations/2017_11_20_061653_create_channels_table.php',
+<<<<<<< HEAD
     'CreateFavoritedsTable' => $baseDir . '/database/migrations/2018_01_06_220426_create_favoriteds_table.php',
     'CreateFavoritesTable' => $baseDir . '/database/migrations/2018_01_06_220327_create_favorites_table.php',
+=======
+    'CreateFavouritesTable' => $baseDir . '/database/migrations/2018_01_10_122458_create_favourites_table.php',
+>>>>>>> d0508460f6c000309b999af575d1b28c22d370b9
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateRepliesTable' => $baseDir . '/database/migrations/2017_10_31_102314_create_replies_table.php',
     'CreateThreadsTable' => $baseDir . '/database/migrations/2017_10_31_082701_create_threads_table.php',
@@ -2990,6 +2993,7 @@ return array(
     'Tests\\CreatesApplication' => $baseDir . '/tests/CreatesApplication.php',
     'Tests\\Feature\\ChannelTest' => $baseDir . '/tests/Unit/ChannelTest.php',
     'Tests\\Feature\\CreateThreadsTest' => $baseDir . '/tests/Feature/CreateThreadsTest.php',
+    'Tests\\Feature\\FavouriteTest' => $baseDir . '/tests/Feature/FavouriteTest.php',
     'Tests\\Feature\\FooTest' => $baseDir . '/tests/Feature/FooTest.php',
     'Tests\\Feature\\ParticipateInThreadTest' => $baseDir . '/tests/Feature/ParticipateInThreadTest.php',
     'Tests\\Feature\\ReadThreadTest' => $baseDir . '/tests/Feature/ReadThreadTest.php',
