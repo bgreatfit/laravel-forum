@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Favourite;
+use App\Reply;
 use Illuminate\Http\Request;
 
 class FavouriteController extends Controller
@@ -42,7 +43,8 @@ class FavouriteController extends Controller
     public function store(Reply $reply)
     {
         //
-       return $reply->favourite(['user_id'=>auth()->user()->id]);
+        $reply->favourite(['user_id'=>auth()->user()->id]);
+        return back();
 //       return \DB::table('favourites')->insert([
 //            'user_id'=>auth()->user()->id,
 //             'favourited_id'=> $reply->id,

@@ -31,8 +31,9 @@ class FavouriteTest extends TestCase
         //when we visit the reply/favourite endpoint
         //then assert collection
         $reply=  create('App\Reply');
-        $this->post('reply/'.$reply->id.'/favourite');
-        $this->assertCount(1,$reply->favourites);
+        $this->post('replies/'.$reply->id.'/favourite');
+        dd(\Favourite::all());
+        //$this->assertCount(1,$reply->favourites);
 
     }
 //    /** @test */
