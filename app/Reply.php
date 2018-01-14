@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
+    use canBeFavourite;
     //
     protected  $guarded =[];
+    protected  $with = ['user','favourites'];
+//    protected  $withCount = ['favourites'];
     public function thread()
     {
         return $this->belongsTo(Thread::class);
@@ -20,18 +23,6 @@ class Reply extends Model
     {
         return $this->user->name;
     }
-    public function favourite($attribute)
-    { if(!$this->favourites()->where($attribute)->exists())
-        {
-            $this->favourites()->create($attribute);
-        }
-    }
-
-    public function favourites()
-    {
-        return $this->morphMany(Favourite::class,'favourited');
-    }
-
 
 
 }

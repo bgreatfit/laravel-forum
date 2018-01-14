@@ -42,8 +42,7 @@ class FavouriteController extends Controller
      */
     public function store(Reply $reply)
     {
-        //
-        $reply->favourite(['user_id'=>auth()->user()->id]);
+        $reply->favourite();
         return back();
 //       return \DB::table('favourites')->insert([
 //            'user_id'=>auth()->user()->id,

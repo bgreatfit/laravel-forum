@@ -29,7 +29,6 @@ Route::get('/threads/{channel}/{thread}','ThreadController@show');
 Auth::routes();
 Route::post('/threads/{channel}/{thread}/replies','ReplyController@store');
 Route::post('/replies/{reply}/favourite','FavouriteController@store');
-
 //Route::resource('threads','ThreadController');
 Route::get('test', function () {
     return view('test');

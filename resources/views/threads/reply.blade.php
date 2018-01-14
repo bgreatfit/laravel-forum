@@ -5,10 +5,11 @@
                 <a href="#">{{$reply->user->name}}</a> said {{$reply->created_at->diffForHumans()}}
 
             </h5>
-            <div>{{$reply->favourites()->count()}}
+            <div>{{$reply->getFavouriteCount()}}
                 <form method="post" action="{{url('/replies/'.$reply->id.'/favourite')}}">
                     {{csrf_field()}}
-                    <button type="submit" class="btn btn-default">Favourite</button>
+                    <button type="submit" class="btn btn-default" {{($reply->isfavourite())?'disabled':''}}>{{str_plural('Favourite'),$reply->favourites_count}}</button>
+
                 </form>
             </div>
         </div>

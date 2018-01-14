@@ -8,6 +8,7 @@ class Thread extends Model
 {
     //
     protected  $guarded =[];
+    protected  $with = ['user'];
     /**
     +     * Boot the model.
     +     */
