@@ -11,15 +11,22 @@ function solution($A=[])
     $sum = 0;
     for($i=0;$i<$length-1;$i++)
     {
+
         for($j=$i+1;$j<$length;$j++)
         {
+
             $sum+=$A[$j];
-            echo $sum;
+            echo $sum." -->$j inner loop".'<br>';
         }
+        echo "$i ---->outerloop<br>";
         $P += $A[$i];
+        $sum1 = abs($P - $sum);
+        echo $sum1." sum<br>";
         $minDiff[] = abs($P - $sum);
+        $sum = 0;
+        echo $P.'<br>';
     }
-    return  (($minDiff));
+    return  (min($minDiff));
 }
 $array = [3,1,2,4,3];
 var_dump(solution($array));
