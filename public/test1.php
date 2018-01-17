@@ -11,7 +11,7 @@ function solution($A=[])
     $sum = 0;
     for($i=0;$i<$length-1;$i++)
     {
-        for($j=$i+1;$j<$length-1;$j++)
+        for($j=$i+1;$j<$length;$j++)
         {
             $sum+=$A[$j];
             echo $sum;
@@ -19,7 +19,7 @@ function solution($A=[])
         $P += $A[$i];
         $minDiff[] = abs($P - $sum);
     }
-    return  (min($minDiff));
+    return  (($minDiff));
 }
 $array = [3,1,2,4,3];
 var_dump(solution($array));
