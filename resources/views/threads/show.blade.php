@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 ">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{$thread->creatorName()}} posted <a href="{{$thread->path()}}">{{$thread->title}}</a></div>
+                    <div class="panel-heading"><a href="{{'/profile/'.$thread->creatorName()}}">{{$thread->creatorName()}}</a> posted <a href="{{$thread->path()}}">{{$thread->title}}</a></div>
 
                     <div class="panel-body">
                         {{$thread->body}}

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
-    use canBeFavourite;
+    use CanBeFavourite;
     //
     protected  $guarded =[];
     protected  $with = ['user','favourites'];

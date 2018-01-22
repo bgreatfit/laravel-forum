@@ -23,8 +23,11 @@ class AppServiceProvider extends ServiceProvider
 //        });
 //            $view->with('channels',$channels);
 //        });
-        \View::share('channels',\App\Channel::all());
-        Schema::defaultStringLength(191);
+        \View::composer('*',function($view) {
+            $view->with('channels', \App\Channel::all());
+            // \View::share('channels',\App\Channel::all());
+            Schema::defaultStringLength(191);
+        });
     }
 
     /**

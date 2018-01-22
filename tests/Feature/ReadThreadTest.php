@@ -48,6 +48,10 @@ class ReadThreadTest extends TestCase
             ->assertSee($threadInChannel->title)
             ->assertDontsee($threadNotInChannel->title);
     }
+
+    /**
+     *
+     */
     public function test_an_authenticated_user_can_filter_thread_by_name()
     {
         $this->signIn(create('App\User',['name'=>'JohnJoe']));

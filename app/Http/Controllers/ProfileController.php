@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Favourite;
-use App\Reply;
+use App\User;
 use Illuminate\Http\Request;
 
-class FavouriteController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         //
@@ -31,7 +25,6 @@ class FavouriteController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -40,36 +33,30 @@ class FavouriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Reply $reply)
-    {
-       // dd($reply);
-        $reply->favourite();
-        return back();
-//       return \DB::table('favourites')->insert([
-//            'user_id'=>auth()->user()->id,
-//             'favourited_id'=> $reply->id,
-//              'favourite_type'=> get_class($reply)
-//        ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Favourite  $favourite
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Favourite $favourite)
+    public function store(Request $request)
     {
         //
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource.
      *
-     * @param  \App\Favourite  $favourite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Favourite $favourite)
+    public function show(User $user)
+    {
+        //
+        return view('profile.show',['profileUser'=>$user]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         //
     }
@@ -78,10 +65,10 @@ class FavouriteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Favourite  $favourite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Favourite $favourite)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -89,10 +76,10 @@ class FavouriteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Favourite  $favourite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Favourite $favourite)
+    public function destroy($id)
     {
         //
     }

@@ -27,11 +27,12 @@ Route::get('/threads/create','ThreadController@create');
 Route::get('/threads/{channel}','ThreadController@index');
 Route::get('/threads/{channel}/{thread}','ThreadController@show');
 Auth::routes();
-Route::post('/threads/{channel}/{thread}/replies','ReplyController@store');
-Route::post('/replies/{reply}/favourite','FavouriteController@store');
+Route::post('/threads/{channel}/{thread}/replies', 'ReplyController@store');
+Route::post('/replies/{reply}/favourite', 'FavouriteController@store');
 //Route::resource('threads','ThreadController');
 Route::get('test', function () {
     return view('test');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile/{user}', 'ProfileController@show')->name('home');
