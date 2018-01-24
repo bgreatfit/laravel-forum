@@ -119,6 +119,8 @@ class ThreadController extends Controller
     public function destroy(Thread $thread)
     {
         //
+        Thread::destroy($thread->id);
+        back();
     }
 
     /**

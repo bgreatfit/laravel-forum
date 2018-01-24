@@ -79,6 +79,17 @@ class ReadThreadTest extends TestCase
 
     }
 
+    /** @test */
+    public function a_signedin_user_can_delete_their_thread()
+    {
+        $this->signIn()->withExceptionHandling();
+        $user = create('App\User');
+        $thread = create('App\Thread',['user_id'=>$user->id]);
+        $this->post('/threads/'.$thread->id)
+        ->assertDontSee($thread->id);
+
+    }
+
 //    public function test_a_user_can_read_replies_that_associated_with_a_thread()
 //    {
 //        $reply = factory('App\Reply')->create(['thread_id'=>$this->thread->id]);

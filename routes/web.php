@@ -23,6 +23,7 @@ Route::post('/runtest','TestController@store');
 Route::get('/','HomeController@index');
 Route::get('/threads','ThreadController@index');
 Route::post('/threads','ThreadController@store');
+Route::post('/threads/{thread}','ThreadController@destroy');
 Route::get('/threads/create','ThreadController@create');
 Route::get('/threads/{channel}','ThreadController@index');
 Route::get('/threads/{channel}/{thread}','ThreadController@show');
